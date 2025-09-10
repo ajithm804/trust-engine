@@ -1,0 +1,50 @@
+{
+  "name": "trust-engine-frontend",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { 
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_API_URL": "https://trust-engine-backend-hackathon.onrender.com/api"
+  },
+  "functions": {
+    "app/index.html": {
+      "maxDuration": 10
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Deployed-By",
+          "value": "Ajith"
+        },
+        {
+          "key": "X-Deployment-Date",
+          "value": "2025-07-06 15:54:39"
+        },
+        {
+          "key": "X-Team",
+          "value": "Halo"
+        }
+      ]
+    }
+  ]
+}
